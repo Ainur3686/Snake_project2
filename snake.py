@@ -26,8 +26,7 @@ for row in table:
 
 """ Modify the existing list by appending a new coordinate in the specified direction """
 def change_table(table, direction):
-    y = table[-1][0]
-    x = table[-1][1]
+    y, x = table[-1]
     if direction == 'e' and x < 9:
       x += 1
     elif direction == 'w' and x > 0:
