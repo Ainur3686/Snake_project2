@@ -38,7 +38,6 @@ def change_table(table, direction):
     else:
        return False
     
-
     table.append((y,x))
 
 table = [(0,0)]
