@@ -36,7 +36,7 @@ def change_table(table, direction):
     elif direction == 's' and y < 9:
       y += 1
     else:
-       pass
+       return False
     
 
     table.append((y,x))
