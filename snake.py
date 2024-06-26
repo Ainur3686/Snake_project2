@@ -20,6 +20,11 @@ def update_board(board, coordinate):
         print('\n')
     return board
 
+board = create_board()
+board = update_board(board, (3,0))
+print('**********')
+board = update_board(board, (3,1))
+
 #Step 2. Write a movement function that gets the coordinates as a list and the direction keyword ('n','s','e','w') and adds to that list, 
 #The last point “moved” - will be added in that direction. 
 
