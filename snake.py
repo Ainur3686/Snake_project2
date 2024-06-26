@@ -2,24 +2,23 @@
 #First number in the pair is rows (x coordinate), second number in the pair is columns (y coordinate)
 
 """"This function allows to initialize the table of dots"""
-def create_table(size=10): #10x10 grid
-    table = []
+def create_board(size=10): #10x10 grid
+    board = []
     for x in range(size):
         row = []
         for y in range(size):
             row.append('.')
-        table.append(row)
-    return table
-
-table = create_table()
+        board.append(row)
+    return board
 
 """"This function gets a list of coordinates and outputs them as a 'X' on the map of dots"""
-table[3][0] = 'x'
-
-for row in table:
-    for element in row:
-        print(element, end = ' ')
-    print('\n') 
+def update_board(board, coordinate):
+    board[coordinate[0]][coordinate[1]] = 'x'
+    for row in board:
+        for element in row:
+            print(element, end = ' ')
+        print('\n')
+    return board
 
 #Step 2. Write a movement function that gets the coordinates as a list and the direction keyword ('n','s','e','w') and adds to that list, 
 #The last point “moved” - will be added in that direction. 
