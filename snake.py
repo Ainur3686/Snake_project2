@@ -12,8 +12,9 @@ def create_board(size=10): #10x10 grid
     return board
 
 """"This function gets a list of coordinates and outputs them as a 'X' on the map of dots"""
-def update_board(board, coordinate):
-    board[coordinate[0]][coordinate[1]] = 'x'
+def update_board(board, coordinates):
+    for y, x in coordinates:
+      board[y][x] = 'x'
     for row in board:
         for element in row:
             print(element, end = ' ')
@@ -21,9 +22,9 @@ def update_board(board, coordinate):
     return board
 
 board = create_board()
-board = update_board(board, (3,0))
+board = update_board(board, [(3,0)])
 print('**********')
-board = update_board(board, (3,1))
+board = update_board(board, [(3,1)])
 
 #Step 2. Write a movement function that gets the coordinates as a list and the direction keyword ('n','s','e','w') and adds to that list, 
 #The last point “moved” - will be added in that direction. 
