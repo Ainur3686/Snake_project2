@@ -21,6 +21,7 @@ def update_board(board, coordinates):
         print('\n')
     return board
 
+#Test the functions
 board = create_board()
 board = update_board(board, [(3,0)])
 print('**********')
@@ -58,3 +59,23 @@ print(board)
 # until the user stops it by writing ‘end’ and then draws the list as a map (as in step 1). 
 # This makes the snake move and grow (combination of tasks 1 and 2)
 
+def user_movement():
+    snake = [(0, 0), (0, 1), (0, 2)]
+    size = 10
+    
+    while True:
+        """Create and update the board with the current snake position"""
+        board = create_board(size)
+        board = update_board(board, snake)
+        
+        user_move = input("Enter a direction (n, s, e, w) or 'end' to finish: ")
+        if user_move == 'end':
+            break
+        
+        if not change_board(snake, user_move):
+            print("Invalid move! Try again.")
+    
+    print("User movement:", snake)
+
+# Start the user movement
+user_movement()
