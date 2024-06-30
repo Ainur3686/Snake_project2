@@ -79,3 +79,38 @@ def user_movement():
 
 # Start the user movement
 user_movement()
+
+#Step 4. Change the movement function (from step 2) so that the resulting list will have the same length as the initial one (snake does not grow,
+# it only moves in a direction). 
+# This means the first positions are “lost” when the new ones are added in order to keep the list same lengths as in the beginning
+#Step 5. Update the movement function to prevent: 
+# ● moving out of the map, ● move to a point that is already in the list. 
+# If that happens, repeat user input.
+
+def change_board(board, direction):
+    y, x = board[-1]
+    if direction == 'e' and x < 9:
+      x += 1
+    elif direction == 'w' and x > 0:
+      x -= 1
+    elif direction == 'n' and y > 0:
+      y -= 1
+    elif direction == 's' and y < 9:
+      y += 1
+    else:
+      return False
+
+    if (y, x) not in board:
+      board.append((y,x))
+      #board[:] = board[1:]
+      board.pop(0)
+
+#Test the change_board function
+board = [(0,0),(0,1)]
+change_board(board,'e')
+change_board(board,'e')
+change_board(board,'e')
+change_board(board,'e')
+change_board(board,'w')
+
+print(board)
