@@ -116,3 +116,52 @@ change_board(board,'e', [(0,3)])
 #change_board(board,'w')
 
 print(board)
+
+# Step 6. Add snake food to the game. In the beginning, the fruit list contains one fruit in a field where there is no snake (for ex. [(2,3)]
+# When the snake eats the fruit, it grows (the tail 'does not disappear', and a new fruit appears on the map in a valid position. 
+# You can extend this with more initial fruits.
+
+import random
+
+def create_board(size=10):
+    board = []
+    for x in range(size):
+        row = []
+        for y in range(size):
+            row.append('.')
+        board.append(row)
+    return board
+
+def update_board(board, snake, food):
+    # Iterate each row
+    for row in range(len(board)):
+        # Iterate each column
+        for col in range(len(board[0])):
+            # Check if coordinate is occupied by snake or food
+            if (row, col) in snake:
+                board[row][col] = 's'
+            elif (row, col) == food:
+                board[row][col] = 'o'
+            else:
+                board[row][col] = '.'
+
+    # Print the board
+    for row in board:
+        for element in row:
+            print(element, end = ' ')
+        print('\n')
+    print('**********')
+
+def generate_new_food(board, snake, food):
+    while True:
+        new_food = random.randint(0, len(board) - 1), random.randint(0, len(board[0]) - 1)
+        if new_food not in snake and new_food not in food:
+            return new_food
+
+#Initialize the game
+board = create_board()
+snake = [(0,0), (0,1), (0,2)]
+food = generate_new_food(board, snake,[])
+
+#Update the board with initial positions
+update_board(board, snake, food)
