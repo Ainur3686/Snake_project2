@@ -77,7 +77,7 @@ def user_movement():
     
     print("User movement:", snake)
 
-# Start the user movement
+# Check the user_movement by calling the function
 user_movement()
 
 #Step 4. Change the movement function (from step 2) so that the resulting list will have the same length as the initial one (snake does not grow,
