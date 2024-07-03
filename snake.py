@@ -87,7 +87,7 @@ user_movement()
 # ● moving out of the map, ● move to a point that is already in the list. 
 # If that happens, repeat user input.
 
-def change_board(board, direction):
+def change_board(board, direction, food):
     y, x = board[-1]
     if direction == 'e' and x < 9:
       x += 1
@@ -102,15 +102,17 @@ def change_board(board, direction):
 
     if (y, x) not in board:
       board.append((y,x))
-      #board[:] = board[1:]
-      board.pop(0)
+      if (y, x) in food:
+            food.remove((y, x))
+      else:
+            board.pop(0)
 
 #Test the change_board function
 board = [(0,0),(0,1)]
-change_board(board,'e')
-change_board(board,'e')
-change_board(board,'e')
-change_board(board,'e')
-change_board(board,'w')
+change_board(board,'e', [(0,3)])
+change_board(board,'e', [(0,3)])
+change_board(board,'e', [(0,3)])
+#change_board(board,'e')
+#change_board(board,'w')
 
 print(board)
