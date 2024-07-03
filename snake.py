@@ -14,7 +14,7 @@ def create_board(size=10): #10x10 grid
 """"This function gets a list of coordinates and outputs them as a 'X' on the map of dots"""
 def update_board(board, coordinates):
     for y, x in coordinates:
-      board[y][x] = 'x'
+      board[y][x] = 's'
     for row in board:
         for element in row:
             print(element, end = ' ')
