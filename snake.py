@@ -241,6 +241,12 @@ def change_board(snake, direction, food, rows, cols):
     return food
 
 #Initialize the game
+rows = 10 #The number of rows can be changed
+cols = 20 #The number of cols can be changed
+
+if rows < 5 or cols <2:
+    raise ValueError ("The board must be at least 5x2 in size")
+
 board = create_board()
 snake = [(0,0), (0,1), (0,2)]
 food = generate_new_food(board, snake)
