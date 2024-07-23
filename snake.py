@@ -212,15 +212,15 @@ def generate_new_food(board, snake):
         if new_food not in snake:
             return new_food
 
-def change_board(snake, direction, food):
+def change_board(snake, direction, food, rows, cols):
     y, x = snake[-1]
-    if direction == 'e' and x < 9:
+    if direction == 'e' and x < cols - 1:
       x += 1
     elif direction == 'w' and x > 0:
       x -= 1
     elif direction == 'n' and y > 0:
       y -= 1
-    elif direction == 's' and y < 9:
+    elif direction == 's' and y < rows - 1:
       y += 1
     else:
       return False
