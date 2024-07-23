@@ -177,11 +177,11 @@ update_board(board, snake, food)
 
 import random
 
-def create_board(size=10):
+def create_board(raws, cols):
     board = []
-    for x in range(size):
+    for x in range(raws):
         row = []
-        for y in range(size):
+        for y in range(cols):
             row.append('.')
         board.append(row)
     return board
