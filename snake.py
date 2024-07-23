@@ -260,7 +260,7 @@ while True:
     direction = input('Type n, s, w, e to move, end to finish the game:')
     if direction == 'end':
         break
-    food = change_board(snake, direction, food)
+    food = change_board(snake, direction, food, rows, cols)
     if not food:
         print("Game over!")
         break
