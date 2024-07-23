@@ -203,13 +203,13 @@ def update_board(board, snake, food):
     for row in board:
         for element in row:
             print(element, end = ' ')
-        print('\n')
+        print()
     print('**********')
 
-def generate_new_food(board, snake, food):
+def generate_new_food(board, snake):
     while True:
         new_food = random.randint(0, len(board) - 1), random.randint(0, len(board[0]) - 1)
-        if new_food not in snake and new_food not in food:
+        if new_food not in snake:
             return new_food
 
 def change_board(snake, direction, food):
@@ -225,25 +225,36 @@ def change_board(snake, direction, food):
     else:
       return False
 
-    if (y, x) not in snake:
-      snake.append((y,x))
-      if (y, x) in food:
-            food = generate_new_food(board, snake, [food])
-      else:
-            snake.pop(0)
+    new_head = (y, x)
 
+    if new_head in snake:
+        return False  # Game over if the snake runs into itself
+
+    snake.append(new_head)
+
+    if new_head == food:
+        # If the snake eats the food, generate new food
+        food = generate_new_food(board, snake)
+    else:
+        # Move the snake forward by removing the tail
+        snake.pop(0)
     return food
 
 #Initialize the game
 board = create_board()
 snake = [(0,0), (0,1), (0,2)]
-food = generate_new_food(board, snake,[])
+food = generate_new_food(board, snake)
 
 #Update the board with initial positions
 update_board(board, snake, food)
 
 # Example moves
-directions = ['e', 'e', 's', 's']
-for direction in directions:
-    food = change_board(snake, direction, food)
+while True:
     update_board(board, snake, food)
+    direction = input('Type n, s, w, e to move, end to finish the game:')
+    if direction == 'end':
+        break
+    food = change_board(snake, direction, food)
+    if not food:
+        print("Game over!")
+        break
